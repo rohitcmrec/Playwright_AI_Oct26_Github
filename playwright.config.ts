@@ -42,7 +42,7 @@ export default defineConfig({
     trace: 'on-first-retry',
     screenshot: 'on-first-failure',
     video: 'retain-on-failure',
-    headless: false,
+    headless: true,
     viewport: { width: 200, height: 500 },
     ignoreHTTPSErrors: true,
     permissions: ['geolocation'],
