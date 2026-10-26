@@ -17,6 +17,8 @@ export class APIClient {
             status: response.status(),
             body: await response.json()
         }
+
+
     }
 
     async post(endPoint: string, options?: RequestOptions) {
