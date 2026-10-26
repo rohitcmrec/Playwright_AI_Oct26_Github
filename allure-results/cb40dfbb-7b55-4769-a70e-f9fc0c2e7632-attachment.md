@@ -1,0 +1,74 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: mockingAPIs\MockTest.spec.ts >> push new data
+- Location: tests\mockingAPIs\MockTest.spec.ts:21:5
+
+# Error details
+
+```
+Error: route.fetch: Test ended.
+Call log:
+  - → GET https://demo.playwright.dev/api-mocking/api/v1/fruits
+    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.8010.12 Safari/537.36
+    - accept: */*
+    - accept-encoding: gzip,deflate,br
+    - accept-language: en-US
+    - referer: https://demo.playwright.dev/api-mocking/
+    - sec-ch-ua: "Chromium";v="153", "Not_A Brand";v="8"
+    - sec-ch-ua-mobile: ?0
+    - sec-ch-ua-platform: "Windows"
+  - operation was aborted: Test ended.
+
+```
+
+# Test source
+
+```ts
+  1  | import { Page } from "@playwright/test";
+  2  | 
+  3  | export class MockAPIClient {
+  4  | 
+  5  |     private readonly page: Page
+  6  | 
+  7  |     constructor(page: Page) {
+  8  |         this.page = page
+  9  |     }
+  10 | 
+  11 |     async changeOutputResponse(method: string, urlPattern: string, data: object[]) {
+  12 | 
+  13 |         await this.page.route(urlPattern, async (route) => {
+  14 | 
+  15 |             if (route.request().method().toUpperCase() === method.toUpperCase()) {
+  16 |                 await route.fulfill({
+  17 |                     json: data
+  18 |                 })
+  19 |             } else {
+  20 |                 await route.continue()
+  21 |             }
+  22 |         })
+  23 | 
+  24 |     }
+  25 | 
+  26 |     async modifyOutputResponse(method: string, urlPattern: string, data: object[]) {
+  27 |         await this.page.route(urlPattern, async route => {
+  28 |             if (route.request().method().toUpperCase() == method.toUpperCase()) {
+> 29 |                 let response = await route.fetch();
+     |                                            ^ Error: route.fetch: Test ended.
+  30 |                 let responseBody = await response.json()
+  31 | 
+  32 |                 responseBody.push(data);
+  33 |                 await route.fulfill({ response: response, json: responseBody })
+  34 |             } else {
+  35 |                 await route.continue()
+  36 |             }
+  37 |         })
+  38 |     }
+  39 | 
+  40 | }
+```

@@ -1,0 +1,8 @@
+Token: 89afce9438af2ae
+Created bookingId: 2029
+--- Header being sent ---
+Cookie: token=89afce9438af2ae
+PUT URL: /booking/2029
+-------------------------
+Response status: 200
+Updated lastname: Agarwal

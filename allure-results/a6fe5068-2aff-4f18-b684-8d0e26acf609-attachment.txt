@@ -1,0 +1,4 @@
+85bb08de1eb392b
+--- Header being sent ---
+Cookie: token=85bb08de1eb392b
+-------------------------

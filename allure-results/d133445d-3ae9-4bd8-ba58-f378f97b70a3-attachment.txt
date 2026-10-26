@@ -1,0 +1,9 @@
+schema error [
+  {
+    instancePath: '',
+    schemaPath: '#/required',
+    keyword: 'required',
+    params: { missingProperty: 'additionalneeds' },
+    message: "must have required property 'additionalneeds'"
+  }
+]

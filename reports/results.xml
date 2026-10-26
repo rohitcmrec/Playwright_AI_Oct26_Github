@@ -1,0 +1,8 @@
+<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="23.463968">
+<testsuite name="mockingAPIs\MockTest.spec.ts" timestamp="2026-10-19T02:47:57.458Z" hostname="chromium" tests="2" failures="0" skipped="0" time="20.741" errors="0">
+<testcase name="mock testing" classname="mockingAPIs\MockTest.spec.ts" time="5.044">
+</testcase>
+<testcase name="push new data" classname="mockingAPIs\MockTest.spec.ts" time="15.697">
+</testcase>
+</testsuite>
+</testsuites>

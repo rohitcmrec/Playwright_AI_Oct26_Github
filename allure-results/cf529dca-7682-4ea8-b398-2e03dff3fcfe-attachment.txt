@@ -1,0 +1,9 @@
+Token: 58eb0c7412399cc
+200
+Created bookingId: 3204
+--- Header being sent ---
+Cookie: token=58eb0c7412399cc
+PUT URL: /booking/3204
+-------------------------
+Response status: 200
+Updated lastname: Shalu
